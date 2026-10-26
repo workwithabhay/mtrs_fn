@@ -1,0 +1,112 @@
+@import "tailwindcss";
+
+@theme {
+  /* Brand and Semantic Colors */
+  --color-brand-primary: #4f46e5;
+  --color-brand-primary-hover: #4338ca;
+  --color-brand-background: #f8fafc;
+  --color-brand-surface: #ffffff;
+  --color-brand-surface-elevated: #ffffff;
+  --color-brand-text-primary: #0f172a;
+  --color-brand-text-secondary: #64748b;
+  --color-brand-text-muted: #94a3b8;
+  --color-brand-border: #e2e8f0;
+  --color-brand-border-subtle: #f1f5f9;
+  --color-brand-success: #15803d;
+  --color-brand-success-hover: #166534;
+  --color-brand-warning: #b45309;
+  --color-brand-warning-hover: #92400e;
+  --color-brand-error: #b91c1c;
+  --color-brand-error-hover: #991b1b;
+  --color-brand-info: #0369a1;
+  --color-brand-info-hover: #075985;
+
+  /* Typography Stack: uses Next.js Inter variable with non-circular fallback */
+  --font-sans: var(--font-inter), "Google Sans", "Google Sans Flex", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Border Radii */
+  --radius-xs: 0.25rem;
+  --radius-sm: 0.375rem;
+  --radius-md: 0.5rem;
+  --radius-lg: 0.75rem;
+  --radius-xl: 1rem;
+  --radius-2xl: 1.25rem;
+  --radius-3xl: 1.5rem;
+  --radius-full: 9999px;
+
+  /* Elevation and Shadows */
+  --shadow-subtle: 0 1px 2px 0 rgb(15 23 42 / 0.05);
+  --shadow-card: 0 4px 6px -1px rgb(15 23 42 / 0.06), 0 2px 4px -2px rgb(15 23 42 / 0.04);
+  --shadow-elevated: 0 10px 15px -3px rgb(15 23 42 / 0.08), 0 4px 6px -4px rgb(15 23 42 / 0.04);
+  --shadow-modal: 0 20px 25px -5px rgb(15 23 42 / 0.1), 0 8px 10px -6px rgb(15 23 42 / 0.05);
+
+  /* Animation Durations and Easing */
+  --transition-duration-fast: 150ms;
+  --transition-duration-normal: 250ms;
+  --transition-duration-slow: 400ms;
+
+  --ease-spring: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Component Heights */
+  --height-input-sm: 2rem;       /* 32px */
+  --height-input-md: 2.5rem;     /* 40px */
+  --height-input-lg: 3rem;       /* 48px */
+}
+
+:root {
+  --background: #f8fafc;
+  --foreground: #0f172a;
+}
+
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Accessible Focus Ring Utility */
+.focus-ring {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
+  transition: box-shadow var(--transition-duration-fast) var(--ease-smooth);
+}
+
+.focus-ring:focus-visible {
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #4f46e5;
+}
+
+/* Accessible Form Field Focus */
+.field-focus {
+  transition: border-color var(--transition-duration-fast) var(--ease-smooth),
+              box-shadow var(--transition-duration-fast) var(--ease-smooth);
+}
+
+.field-focus:focus {
+  outline: none;
+  border-color: #4f46e5;
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+.field-error {
+  border-color: #b91c1c !important;
+}
+
+.field-error:focus {
+  box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.15) !important;
+}
+
+/* Reduced Motion Accessibility Support */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
