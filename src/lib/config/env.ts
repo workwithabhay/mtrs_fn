@@ -19,7 +19,7 @@ export interface FrontendConfig {
 export function validateAndParseConfig(env: Record<string, string | undefined> = process.env): FrontendConfig {
   // const apiUrl = env.NEXT_PUBLIC_API_URL || 'http://localhost:5050/api/v1';
   const apiUrl = env.NEXT_PUBLIC_API_URL || 'https://mtrs-bg.vercel.app/api/v1';
-  const appUrl = env.NEXT_PUBLIC_APP_URL || 'http://localhost:3000';
+  const appUrl = env.NEXT_PUBLIC_APP_URL || 'https://mtrs-fn.vercel.app/';
 
   try {
     const parsed = new URL(apiUrl);
