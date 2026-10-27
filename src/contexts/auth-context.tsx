@@ -71,6 +71,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   }, []);
 
   const setSession = React.useCallback((session: AuthSessionData) => {
+    if (session.token && typeof window !== 'undefined') {
+      localStorage.setItem('auth_token', session.token);
+    }
     setUser(session.user);
     setBusiness(session.business);
     setIsLoading(false);
@@ -81,6 +84,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
     try {
       await apiLogout();
     } finally {
+      if (typeof window !== 'undefined') {
+        localStorage.removeItem('auth_token');
+      }
       setUser(null);
       setBusiness(null);
       setIsLoading(false);

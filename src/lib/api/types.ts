@@ -96,6 +96,7 @@ export interface UpdateBusinessSettingsPayload {
 export interface AuthSessionData {
   user: User;
   business: Business | null;
+  token?: string;
 }
 
 export interface OtpChallengeResult {

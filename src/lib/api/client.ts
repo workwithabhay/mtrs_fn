@@ -15,6 +15,13 @@ export class ApiError extends Error {
   }
 }
 
+export function getAuthToken(): string | null {
+  if (typeof window === 'undefined') {
+    return null;
+  }
+  return localStorage.getItem('auth_token');
+}
+
 /**
  * Extracts the readable csrf_token cookie set by the backend.
  * Accessible to client-side JavaScript for Double-Submit CSRF protection.
@@ -70,6 +77,14 @@ export async function apiFetch<T>(
 
   if (!headers.has('Accept')) {
     headers.set('Accept', 'application/json');
+  }
+
+  // Set Authorization Bearer header if available and not explicitly provided
+  if (!headers.has('Authorization')) {
+    const token = getAuthToken();
+    if (token) {
+      headers.set('Authorization', `Bearer ${token}`);
+    }
   }
 
   // Set Content-Type for JSON payloads if not already set and body exists
@@ -185,6 +200,14 @@ export async function apiFetchWithMeta<T>(
     headers.set('Accept', 'application/json');
   }
 
+  // Set Authorization Bearer header if available and not explicitly provided
+  if (!headers.has('Authorization')) {
+    const token = getAuthToken();
+    if (token) {
+      headers.set('Authorization', `Bearer ${token}`);
+    }
+  }
+
   if (options.body && typeof options.body === 'string' && !headers.has('Content-Type')) {
     headers.set('Content-Type', 'application/json');
   }
@@ -293,6 +316,14 @@ export async function apiFetchBlob(
 
   const method = (options.method || 'GET').toUpperCase();
   const headers = new Headers(options.headers || {});
+
+  // Set Authorization Bearer header if available and not explicitly provided
+  if (!headers.has('Authorization')) {
+    const token = getAuthToken();
+    if (token) {
+      headers.set('Authorization', `Bearer ${token}`);
+    }
+  }
 
   const timeoutMs = options.timeoutMs ?? 20000;
   const controller = new AbortController();
