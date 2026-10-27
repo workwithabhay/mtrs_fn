@@ -4,9 +4,9 @@ import { validateAndParseConfig } from '@/lib/config/env';
 describe('Frontend Environment Configuration', () => {
   it('should parse default configuration when no env variables are passed', () => {
     const config = validateAndParseConfig({});
-    expect(config.apiUrl).toBe('http://localhost:5050/api/v1');
-    expect(config.backendBaseUrl).toBe('http://localhost:5050');
-    expect(config.appUrl).toBe('http://localhost:3000');
+    expect(config.apiUrl).toBe('https://mtrs-bg.vercel.app/api/v1');
+    expect(config.backendBaseUrl).toBe('https://mtrs-bg.vercel.app');
+    expect(config.appUrl).toBe('https://mtrs-fn.vercel.app/');
     expect(config.isProduction).toBe(false);
     expect(config.isDevelopment).toBe(true);
   });
