@@ -149,8 +149,15 @@ export async function triggerCampaignDownload(
  * Builds the canonical public customer feedback destination URL for a campaign token.
  */
 export function getPublicCampaignLandingUrl(publicToken: string): string {
-  // Use frontend origin if available in browser, else config.appUrl
-  if (typeof window !== 'undefined' && window.location.origin) {
+  // If running in browser on a production/deployed host, use window.location.origin.
+  // When running locally on localhost/127.0.0.1 or during SSR, use config.appUrl
+  // so that scanned QR codes and copied links point to the live deployment (https://mtrs-fn.vercel.app).
+  if (
+    typeof window !== 'undefined' &&
+    window.location.origin &&
+    !window.location.hostname.includes('localhost') &&
+    !window.location.hostname.includes('127.0.0.1')
+  ) {
     return `${window.location.origin}/qr/${publicToken}`;
   }
   const appBase = config.appUrl.replace(/\/+$/, '');

@@ -210,8 +210,15 @@ describe('QR Campaigns API Service', () => {
     expect(createObjectURLMock).toHaveBeenCalledWith(mockBlob);
   });
 
-  it('getPublicCampaignLandingUrl should return canonical public URL', () => {
+  it('getPublicCampaignLandingUrl should return canonical public URL on live deployment', () => {
     const url = getPublicCampaignLandingUrl('a1b2c3d4e5f6789012345678');
     expect(url).toContain('/qr/a1b2c3d4e5f6789012345678');
+    expect(url).toBe('https://mtrs-fn.vercel.app/qr/a1b2c3d4e5f6789012345678');
+  });
+
+  it('getPublicCampaignLandingUrl should avoid localhost origin and return live deployment URL', () => {
+    // jsdom defaults to localhost
+    const url = getPublicCampaignLandingUrl('tok_123');
+    expect(url).toBe('https://mtrs-fn.vercel.app/qr/tok_123');
   });
 });
