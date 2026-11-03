@@ -6,7 +6,7 @@ import { Card } from '@/components/ui/card';
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden pt-12 pb-20 sm:pt-20 sm:pb-28 border-b border-brand-border">
+    <section className="relative overflow-hidden pt-28 pb-20 sm:pt-36 sm:pb-28 lg:pt-44 lg:pb-32 border-b border-brand-border">
       {/* Background Decorative Grid */}
       <div
         className="pointer-events-none absolute inset-0 -z-10 opacity-[0.03]"
@@ -19,10 +19,10 @@ export function Hero() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center text-center max-w-3xl mx-auto space-y-6">
-          {/* Trust Banner Tag */}
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-indigo-50 text-brand-primary border border-indigo-100">
-            <Sparkles className="w-3.5 h-3.5 text-brand-primary shrink-0" />
-            <span>Ethical, Non-Gated Review Management</span>
+          {/* Growth Tagline Pill */}
+          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs font-semibold bg-indigo-50 text-indigo-700 border border-indigo-200/80 shadow-xs">
+          
+            <span>Built for Growing Businesses • Turn Every Visit into 5-Star Reviews</span>
           </div>
 
           {/* Main Headline */}
@@ -37,13 +37,22 @@ export function Hero() {
 
           {/* Action Buttons */}
           <div className="flex flex-col sm:flex-row items-center gap-3 pt-2 w-full sm:w-auto">
-            <Button size="lg" className="w-full sm:w-auto text-base" asChild>
+            <Button
+              size="lg"
+              className="w-full sm:w-auto text-base rounded-full bg-indigo-600 hover:bg-indigo-700 text-white shadow-md shadow-indigo-600/20 px-8 py-3.5 h-auto font-bold transition-all duration-200 hover:shadow-lg hover:shadow-indigo-600/25 active:scale-95"
+              asChild
+            >
               <Link href="/signup">
                 <span>Get Started</span>
-                <ArrowRight className="w-4 h-4 ml-1.5" />
+                <ArrowRight className="w-4 h-4 ml-2" />
               </Link>
             </Button>
-            <Button size="lg" variant="secondary" className="w-full sm:w-auto text-base" asChild>
+            <Button
+              size="lg"
+              variant="secondary"
+              className="w-full sm:w-auto text-base rounded-full px-7 py-3.5 h-auto font-semibold border border-slate-200"
+              asChild
+            >
               <a href="#how-it-works">See How It Works</a>
             </Button>
           </div>

@@ -24,6 +24,7 @@
   /* Typography Stack: uses Next.js Inter variable with non-circular fallback */
   --font-sans: var(--font-inter), "Google Sans", "Google Sans Flex", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  --font-handwritten: var(--font-caveat), "Caveat", cursive, sans-serif;
 
   /* Border Radii */
   --radius-xs: 0.25rem;
@@ -50,9 +51,12 @@
   --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
 
   /* Component Heights */
-  --height-input-sm: 2rem;       /* 32px */
-  --height-input-md: 2.5rem;     /* 40px */
-  --height-input-lg: 3rem;       /* 48px */
+  --height-input-sm: 2rem;
+  /* 32px */
+  --height-input-md: 2.5rem;
+  /* 40px */
+  --height-input-lg: 3rem;
+  /* 48px */
 }
 
 :root {
@@ -82,7 +86,7 @@ body {
 /* Accessible Form Field Focus */
 .field-focus {
   transition: border-color var(--transition-duration-fast) var(--ease-smooth),
-              box-shadow var(--transition-duration-fast) var(--ease-smooth);
+    box-shadow var(--transition-duration-fast) var(--ease-smooth);
 }
 
 .field-focus:focus {
@@ -99,8 +103,51 @@ body {
   box-shadow: 0 0 0 3px rgba(185, 28, 28, 0.15) !important;
 }
 
+/* Horizontal Marquee Sliding Animations */
+@keyframes slide-left {
+  0% {
+    transform: translate3d(0, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+
+@keyframes slide-right {
+  0% {
+    transform: translate3d(-50%, 0, 0);
+  }
+
+  100% {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.animate-slide-left {
+  display: flex;
+  width: max-content;
+  animation: slide-left 42s linear infinite;
+  will-change: transform;
+}
+
+.animate-slide-right {
+  display: flex;
+  width: max-content;
+  animation: slide-right 42s linear infinite;
+  will-change: transform;
+}
+
+.animate-slide-left-slow {
+  display: flex;
+  width: max-content;
+  animation: slide-left 50s linear infinite;
+  will-change: transform;
+}
+
 /* Reduced Motion Accessibility Support */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {
@@ -108,5 +155,11 @@ body {
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+  }
+
+  .animate-slide-left,
+  .animate-slide-right,
+  .animate-slide-left-slow {
+    animation: none !important;
   }
 }

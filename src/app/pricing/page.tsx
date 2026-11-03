@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import { Navbar } from '@/components/marketing/navbar';
 import { Footer } from '@/components/marketing/footer';
+import PixelCard from '@/components/ui/PixelCard';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -186,7 +187,26 @@ export default function PricingPage() {
           {/* Commercial Plans Grid: Monthly (₹99) and Five-Month (₹399) */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto items-stretch">
             {/* 1. Monthly Plan */}
-            <Card className="flex flex-col justify-between p-6 bg-brand-surface border border-brand-border shadow-xs hover:border-slate-300 transition-all">
+            <PixelCard
+              colors={["#18181b", "#52525b", "#a1a1aa"]}
+              glowColor="#71717a"
+              shape="square"
+              origin="center"
+              gap={5}
+              pixelSize={2}
+              speed={35}
+              revealDuration={600}
+              spotlight={0.5}
+              glow={0.5}
+              opacity={0.35}
+              fade={0.7}
+              trigger="hover"
+              radius={24}
+              clickPulse
+              intro
+              theme="light"
+              className="flex flex-col justify-between p-6 border border-brand-border shadow-xs hover:border-slate-300 transition-all h-full"
+            >
               <div>
                 <CardHeader className="p-0 pb-6 border-b border-brand-border space-y-2">
                   <div className="flex items-center justify-between">
@@ -246,76 +266,97 @@ export default function PricingPage() {
                   </Link>
                 </Button>
               </CardFooter>
-            </Card>
+            </PixelCard>
 
             {/* 2. Five-Month Package */}
-            <Card className="flex flex-col justify-between p-6 bg-brand-surface border-2 border-brand-primary shadow-elevated ring-1 ring-brand-primary/20 relative">
-              <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+            <div className="relative flex flex-col h-full">
+              <div className="absolute -top-3 left-1/2 -translate-x-1/2 z-10">
                 <Badge variant="default" size="sm" className="bg-brand-primary text-white shadow-subtle px-3 py-0.5">
                   Best Value Package
                 </Badge>
               </div>
 
-              <div>
-                <CardHeader className="p-0 pb-6 border-b border-brand-border space-y-2">
-                  <div className="flex items-center justify-between">
-                    <CardTitle className="text-xl font-bold text-brand-text-primary">
-                      {COMMERCIAL_PLANS.five_month.name}
-                    </CardTitle>
-                    <Badge variant="default" className="text-[11px] bg-indigo-50 text-indigo-700 border-indigo-200">
-                      5 Calendar Months
-                    </Badge>
-                  </div>
-                  <CardDescription className="text-xs text-brand-text-secondary min-h-[32px]">
-                    One-time payment granting 5 full calendar months of uninterrupted platform access.
-                  </CardDescription>
-
-                  <div className="pt-3">
-                    <div className="flex items-baseline gap-1.5">
-                      <span className="text-4xl font-extrabold text-brand-text-primary">
-                        {COMMERCIAL_PLANS.five_month.formattedPrice}
-                      </span>
-                      <span className="text-xs text-brand-text-secondary font-medium">
-                        one-time purchase (5 calendar months)
-                      </span>
+              <PixelCard
+                colors={["#312e81", "#4f46e5", "#818cf8"]}
+                glowColor="#6366f1"
+                shape="square"
+                origin="center"
+                gap={5}
+                pixelSize={2}
+                speed={35}
+                revealDuration={600}
+                spotlight={0.6}
+                glow={0.6}
+                opacity={0.4}
+                fade={0.7}
+                trigger="hover"
+                radius={24}
+                clickPulse
+                intro
+                theme="light"
+                className="flex flex-col justify-between p-6 border-2 border-brand-primary shadow-elevated ring-1 ring-brand-primary/20 h-full"
+              >
+                <div>
+                  <CardHeader className="p-0 pb-6 border-b border-brand-border space-y-2">
+                    <div className="flex items-center justify-between">
+                      <CardTitle className="text-xl font-bold text-brand-text-primary">
+                        {COMMERCIAL_PLANS.five_month.name}
+                      </CardTitle>
+                      <Badge variant="default" className="text-[11px] bg-indigo-50 text-indigo-700 border-indigo-200">
+                        5 Calendar Months
+                      </Badge>
                     </div>
-                  </div>
-                </CardHeader>
+                    <CardDescription className="text-xs text-brand-text-secondary min-h-[32px]">
+                      One-time payment granting 5 full calendar months of uninterrupted platform access.
+                    </CardDescription>
 
-                <CardContent className="p-0 py-6 space-y-4">
-                  <div className="p-3 rounded-xl bg-slate-50 border border-brand-border/60 text-[11px] text-slate-600 space-y-1">
-                    <span className="font-semibold text-brand-text-primary flex items-center gap-1">
-                      <ShieldCheck className="w-3.5 h-3.5 text-indigo-600" />
-                      Package Terms:
-                    </span>
-                    <p className="leading-relaxed">
-                      {COMMERCIAL_PLANS.five_month.termDescription}
-                    </p>
-                  </div>
+                    <div className="pt-3">
+                      <div className="flex items-baseline gap-1.5">
+                        <span className="text-4xl font-extrabold text-brand-text-primary">
+                          {COMMERCIAL_PLANS.five_month.formattedPrice}
+                        </span>
+                        <span className="text-xs text-brand-text-secondary font-medium">
+                          one-time purchase (5 calendar months)
+                        </span>
+                      </div>
+                    </div>
+                  </CardHeader>
 
-                  <div className="text-xs font-semibold text-brand-text-primary">
-                    Plan Capabilities:
-                  </div>
-                  <ul className="space-y-2.5">
-                    {COMMERCIAL_PLANS.five_month.features.map((feat) => (
-                      <li key={feat} className="flex items-start gap-2 text-xs text-brand-text-secondary">
-                        <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
-                        <span>{feat}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </CardContent>
-              </div>
+                  <CardContent className="p-0 py-6 space-y-4">
+                    <div className="p-3 rounded-xl bg-slate-50 border border-brand-border/60 text-[11px] text-slate-600 space-y-1">
+                      <span className="font-semibold text-brand-text-primary flex items-center gap-1">
+                        <ShieldCheck className="w-3.5 h-3.5 text-indigo-600" />
+                        Package Terms:
+                      </span>
+                      <p className="leading-relaxed">
+                        {COMMERCIAL_PLANS.five_month.termDescription}
+                      </p>
+                    </div>
 
-              <CardFooter className="p-0 pt-4 border-t border-brand-border">
-                <Button variant="primary" size="md" className="w-full" asChild>
-                  <Link href={isAuthenticated ? '/dashboard/billing' : '/signup'}>
-                    <span>{isAuthenticated ? 'Select 5-Month Package in Dashboard' : 'Get Started with 5-Month Package'}</span>
-                    <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
-                  </Link>
-                </Button>
-              </CardFooter>
-            </Card>
+                    <div className="text-xs font-semibold text-brand-text-primary">
+                      Plan Capabilities:
+                    </div>
+                    <ul className="space-y-2.5">
+                      {COMMERCIAL_PLANS.five_month.features.map((feat) => (
+                        <li key={feat} className="flex items-start gap-2 text-xs text-brand-text-secondary">
+                          <Check className="w-4 h-4 text-emerald-600 shrink-0 mt-0.5" />
+                          <span>{feat}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </CardContent>
+                </div>
+
+                <CardFooter className="p-0 pt-4 border-t border-brand-border">
+                  <Button variant="primary" size="md" className="w-full" asChild>
+                    <Link href={isAuthenticated ? '/dashboard/billing' : '/signup'}>
+                      <span>{isAuthenticated ? 'Select 5-Month Package in Dashboard' : 'Get Started with 5-Month Package'}</span>
+                      <ArrowRight className="w-3.5 h-3.5 ml-1.5" />
+                    </Link>
+                  </Button>
+                </CardFooter>
+              </PixelCard>
+            </div>
           </div>
 
           {/* FREE4YOU Promotional Redemption Box */}
@@ -395,7 +436,7 @@ export default function PricingPage() {
             </div>
 
             <div className="space-y-4 text-xs text-brand-text-secondary">
-              <div className="p-4 rounded-xl border border-brand-border bg-slate-50 space-y-1">
+              <div className="p-4 rounded-xl border border-brand-border bg-slate-50 space-y-1 hover:border-slate-300 hover:shadow-card hover:-translate-y-0.5 transition-all duration-200">
                 <strong className="text-brand-text-primary block text-sm">
                   What happens when my 7-day free trial ends?
                 </strong>
@@ -404,7 +445,7 @@ export default function PricingPage() {
                 </p>
               </div>
 
-              <div className="p-4 rounded-xl border border-brand-border bg-slate-50 space-y-1">
+              <div className="p-4 rounded-xl border border-brand-border bg-slate-50 space-y-1 hover:border-slate-300 hover:shadow-card hover:-translate-y-0.5 transition-all duration-200">
                 <strong className="text-brand-text-primary block text-sm">
                   Does the Five-Month plan auto-renew?
                 </strong>
@@ -413,7 +454,7 @@ export default function PricingPage() {
                 </p>
               </div>
 
-              <div className="p-4 rounded-xl border border-brand-border bg-slate-50 space-y-1">
+              <div className="p-4 rounded-xl border border-brand-border bg-slate-50 space-y-1 hover:border-slate-300 hover:shadow-card hover:-translate-y-0.5 transition-all duration-200">
                 <strong className="text-brand-text-primary block text-sm">
                   How does payment verification work?
                 </strong>

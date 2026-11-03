@@ -42,13 +42,13 @@ export function CtaBanner() {
         {/* Action Buttons */}
         <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
           <Button
-            asChild
             size="lg"
-            className="w-full sm:w-auto bg-white text-slate-900 hover:bg-slate-100 font-semibold shadow-lg shadow-black/20"
+            className="w-full sm:w-auto text-base rounded-full bg-indigo-600 hover:bg-indigo-700 text-white shadow-lg shadow-indigo-600/30 px-8 py-3.5 h-auto font-bold transition-all duration-200 hover:shadow-xl hover:shadow-indigo-600/40 hover:-translate-y-0.5 active:translate-y-0"
+            asChild
           >
             <Link href="/signup">
               <span>Get Started Free</span>
-              <ArrowRight className="w-4 h-4 ml-1.5" />
+              <ArrowRight className="w-4 h-4 ml-2" />
             </Link>
           </Button>
 
@@ -56,7 +56,7 @@ export function CtaBanner() {
             asChild
             variant="outline"
             size="lg"
-            className="w-full sm:w-auto border-slate-700 bg-slate-800/60 text-white hover:bg-slate-800 hover:text-white"
+            className="w-full sm:w-auto text-base rounded-full px-7 py-3.5 h-auto font-semibold border-slate-700/80 bg-slate-800/60 text-white hover:bg-slate-800 hover:text-white"
           >
             <Link href="#how-it-works">See How It Works</Link>
           </Button>
@@ -81,3 +81,5 @@ export function CtaBanner() {
     </section>
   );
 }
+
+export default CtaBanner;

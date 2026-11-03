@@ -1,11 +1,17 @@
 import type { Metadata, Viewport } from 'next';
-import { Inter } from 'next/font/google';
+import { Inter, Caveat } from 'next/font/google';
 import { Toaster } from '@/components/ui/toast';
 import { AuthProvider } from '@/contexts/auth-context';
 import './globals.css';
 
 const inter = Inter({
   variable: '--font-inter',
+  subsets: ['latin'],
+  display: 'swap',
+});
+
+const caveat = Caveat({
+  variable: '--font-caveat',
   subsets: ['latin'],
   display: 'swap',
 });
@@ -29,7 +35,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full scroll-smooth`}>
+    <html lang="en" className={`${inter.variable} ${caveat.variable} h-full scroll-smooth`}>
       <body className="min-h-full flex flex-col font-sans bg-brand-background text-brand-text-primary antialiased">
         <AuthProvider>
           {children}
